@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  zammad:
+    environment:
+      - DATABASE_URL=postgresql://zammad-db_owner:npg_uMjODgxf7A6Y@ep-spring-block-a149m6w5-pooler.ap-southeast-1.aws.neon.tech/zammad-db?sslmode=require
+      - ELASTICSEARCH_URL=https://yz9ihrjzxr:yftmmsg1t9@snatchticket-9825942504.us-east-1.bonsaisearch.net:443
+    ports:
+      - "3000:3000"
+    depends_on:
+      - elasticsearch
+      - postgres
+
+  elasticsearch:
+    image: busybox
+    command: tail -f /dev/null
+
+  postgres:
+    image: busybox
+    command: tail -f /dev/null
